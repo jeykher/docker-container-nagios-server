@@ -1,0 +1,14 @@
+version: '3'
+services:
+    nagios-server:
+        build: .
+        container_name: nagios-server
+        restart: unless-stopped
+        ports:
+            - "0.0.0.0:8080:80"
+        volumes:
+            - ./nagios/etc/:/opt/nagios/etc/
+            - ./nagios/var/:/opt/nagios/var/
+            - ./nagios/custom-plugins/:/opt/Custom-Nagios-Plugins/
+            - ./nagios/nagiosgraph-var/:/opt/nagiosgraph/var/
+            - ./nagios/nagiosgraph-etc/:/opt/nagiosgraph/etc/
